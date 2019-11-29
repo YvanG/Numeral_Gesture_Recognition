@@ -20,6 +20,7 @@ from skimage.feature import hog
 from skimage import data, exposure
 from sklearn import svm
 
+#HoG loading
 data_path = '/storage/plzen1/home/grubiv/AMIR/SPECOM2018/annotations/HoGs/'
 filename = 'HoG_trainN_3.h5'
 f_out = data_path+filename
@@ -30,6 +31,7 @@ with h5py.File(f_out,'r') as fr:
 print(X.shape)
 print(y.shape)
 
+#SVM training
 svc = svm.SVC()
 svc.fit(X, y)
 

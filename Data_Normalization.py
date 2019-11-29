@@ -17,6 +17,7 @@ import scipy.stats as stats
 import cv2
 import h5py
 
+#data loading
 data_path = '/storage/plzen1/home/grubiv/AMIR/SPECOM2018/annotations/train_h5/'
 dirs = os.listdir(data_path)
 dirs.sort()
@@ -48,6 +49,7 @@ dirs = os.listdir(data_path)
 dirs.sort()
 print(dirs)
 
+#data normalization
 poc = 0
 for files in dirs:
     f_out = data_path+files

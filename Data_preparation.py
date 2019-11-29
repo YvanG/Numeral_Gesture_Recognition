@@ -6,7 +6,7 @@ __maintainer__ = "Ivan Gruber"
 __email__ = "ivan.gruber@seznam.cz"
 
 """
-Data preparation
+Data shuffling
 """
 
 import os
@@ -17,6 +17,7 @@ import scipy.stats as stats
 import cv2
 import h5py
 
+#data loading
 h5_num = 1
 data_path = '/storage/plzen1/home/grubiv/AMIR/SPECOM2018/annotations/'+str(h5_num)+'/'
 dirs = os.listdir(data_path)
@@ -39,6 +40,7 @@ for files in dirs[1:]:
     print(X.shape)
     print(y.shape)
 
+#delete garbage
 index = 0
 num_of_del = 0
 while True:
@@ -58,6 +60,7 @@ print(X.shape)
 print(y.shape)
 print('Pocet smazanych: '+str(num_of_del))
 
+#shuffle data
 perm = np.random.permutation(X.shape[0])
 XS = np.zeros_like(X)
 yS = np.zeros_like(y)

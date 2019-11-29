@@ -27,6 +27,7 @@ from keras.callbacks import LearningRateScheduler
 import math
 import h5py
 
+#data loading
 h5_file = '/storage/plzen1/home/grubiv/AMIR/SPECOM2018/annotations/train_h5/trainN_1.h5'
 with h5py.File(h5_file,'r') as fr:
         X = fr['data'][:]
@@ -43,6 +44,7 @@ y_one_hot_dev = np.zeros((y_dev.shape[0], 11))
 y_one_hot_dev[np.arange(y_dev.shape[0]), y_dev] = 1
 X2_dev = np.expand_dims(X_dev, axis = 3)
 
+#model definition
 from keras.models import Sequential
 from keras.layers.core import Flatten, Dense, Dropout
 from keras.layers.convolutional import Convolution2D, MaxPooling2D, ZeroPadding2D
@@ -90,6 +92,7 @@ model.add(Dropout(0.5))
 model.add(Dense(11, activation='softmax'))
 model.summary()
 
+#model training
 sgd = SGD(lr=0.001, decay=1e-6, momentum=0.9, nesterov=True)
 model.compile(optimizer=sgd, loss='categorical_crossentropy', metrics = ['accuracy'])
 epochs = 15
